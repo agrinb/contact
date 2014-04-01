@@ -1,0 +1,33 @@
+<h1>Listing mycontacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Emailbusiness</th>
+      <th>Emailpersonal</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mycontacts.each do |mycontact| %>
+      <tr>
+        <td><%= mycontact.firstName %></td>
+        <td><%= mycontact.lastName %></td>
+        <td><%= mycontact.emailBusiness %></td>
+        <td><%= mycontact.emailPersonal %></td>
+        <td><%= link_to 'Show', mycontact %></td>
+        <td><%= link_to 'Edit', edit_mycontact_path(mycontact) %></td>
+        <td><%= link_to 'Destroy', mycontact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mycontact', new_mycontact_path %>

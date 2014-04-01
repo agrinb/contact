@@ -1,4 +1,13 @@
 Contact::Application.routes.draw do
+  resources :meetings
+
+  resources :notes
+
+  resources :comments
+
+  resources :mycontacts
+
+  devise_for :users
   root "pages#welcome"
   get "about" => "pages#about"
   get "welcome" => "pages#welcome"
