@@ -1,20 +1,32 @@
 Contact::Application.routes.draw do
-  resources :meetings
-
-  resources :notes
-
-  resources :comments
-
-  resources :mycontacts
-
-  devise_for :users
   root "pages#welcome"
+  devise_for :users
+
+  #get "users/upgrade"
+  resources :users do
+    member do 
+      get "upgrade"
+      get "downgrade"
+    end
+    resources :mycontacts do
+       resources :meetings
+       resources :notes
+       resources :comments
+     end
+   end
+
+
   get "about" => "pages#about"
   get "welcome" => "pages#welcome"
   get "contact" => "pages#contact"
   get "pages/welcome"
   get "pages/about"
   get "pages/contact"
+  # get "upgrade" => "users#upgrade"
+  # get "downgrade" => "users#downgrade"
+
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

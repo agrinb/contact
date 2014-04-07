@@ -18,6 +18,16 @@
 		</div>
 
 		<div class="form-group">
+		  <%= f.label :firstName %>
+		  <%= f.text_field :first_name, class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+		  <%= f.label :lastName %>
+		  <%= f.text_field :last_name, class: "form-control" %>
+		</div>
+
+		<div class="form-group">
 		<%= f.submit "Sign up", class: "btn btn-primary" %> 
 		</div>
 	<% end %>

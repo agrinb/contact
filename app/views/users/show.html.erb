@@ -1,0 +1,14 @@
+
+<h1> Hello <%= @user.first_name.capitalize %></h1>
+
+<ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+
+<% if @user.status == "premium" %>
+<%= link_to "Downgrade to Free", downgrade_user_path %> 
+<% else %>
+<%= link_to "Upgrade to Premium", upgrade_user_path %>
+<% end %>

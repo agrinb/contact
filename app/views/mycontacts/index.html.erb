@@ -16,13 +16,13 @@
   <tbody>
     <% @mycontacts.each do |mycontact| %>
       <tr>
-        <td><%= mycontact.firstName %></td>
-        <td><%= mycontact.lastName %></td>
-        <td><%= mycontact.emailBusiness %></td>
-        <td><%= mycontact.emailPersonal %></td>
-        <td><%= link_to 'Show', mycontact %></td>
-        <td><%= link_to 'Edit', edit_mycontact_path(mycontact) %></td>
-        <td><%= link_to 'Destroy', mycontact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= mycontact.first_name %></td>
+        <td><%= mycontact.last_name %></td>
+        <td><%= mycontact.email_business %></td>
+        <td><%= mycontact.email_personal %></td>
+        <td><%= link_to 'Show', user_mycontact_path(@user, mycontact) %></td>
+        <td><%= link_to 'Edit', edit_user_mycontact_path(@user, mycontact) %></td>
+        <td><%= link_to 'Destroy', user_mycontact_path(@user, mycontact), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Mycontact', new_mycontact_path %>
+<%= link_to 'Add Contact', new_user_mycontact_path %>

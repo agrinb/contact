@@ -1,24 +1,8 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Firstname:</strong>
-  <%= @mycontact.firstName %>
-</p>
-
-<p>
-  <strong>Lastname:</strong>
-  <%= @mycontact.lastName %>
-</p>
-
-<p>
-  <strong>Emailbusiness:</strong>
-  <%= @mycontact.emailBusiness %>
-</p>
-
-<p>
-  <strong>Emailpersonal:</strong>
-  <%= @mycontact.emailPersonal %>
-</p>
-
-<%= link_to 'Edit', edit_mycontact_path(@mycontact) %> |
-<%= link_to 'Back', mycontacts_path %>
+<% if @user.status == "free" %>
+	<%= render partial: 'free_form' %>
+<% else %>
+	<%= render partial: 'premium_form' %>
+<% end %>
+<%= link_to 'Edit', edit_user_mycontact_path(@user, @mycontact) %> |
+<%= link_to 'Back', user_mycontacts_path %>

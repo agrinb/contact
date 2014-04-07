@@ -1,20 +1,26 @@
 class MycontactsController < ApplicationController
   before_action :set_mycontact, only: [:show, :edit, :update, :destroy]
+ 
 
   # GET /mycontacts
   # GET /mycontacts.json
   def index
-    @mycontacts = Mycontact.all
+    @user = User.find(params[:user_id])
+    @mycontacts = @user.mycontacts
   end
 
   # GET /mycontacts/1
   # GET /mycontacts/1.json
   def show
+    @user = User.find(params[:user_id])
+    @mycontact = @user.mycontacts.find(params[:id])
   end
 
   # GET /mycontacts/new
   def new
-    @mycontact = Mycontact.new
+    # @mycontact = Mycontact.new
+    @user = User.find(params[:user_id])
+    @mycontact = @user.mycontacts.new
   end
 
   # GET /mycontacts/1/edit
@@ -24,11 +30,12 @@ class MycontactsController < ApplicationController
   # POST /mycontacts
   # POST /mycontacts.json
   def create
-    @mycontact = Mycontact.new(mycontact_params)
-
+    # @mycontact = Mycontact.new(mycontact_params)
+    @user = User.find(params[:user_id])
+    @mycontact = @user.mycontacts.create(mycontact_params)
     respond_to do |format|
       if @mycontact.save
-        format.html { redirect_to @mycontact, notice: 'Mycontact was successfully created.' }
+        format.html { redirect_to user_mycontact_path(@user, @mycontact), notice: 'Mycontact was successfully created.' }
         format.json { render action: 'show', status: :created, location: @mycontact }
       else
         format.html { render action: 'new' }
@@ -40,9 +47,10 @@ class MycontactsController < ApplicationController
   # PATCH/PUT /mycontacts/1
   # PATCH/PUT /mycontacts/1.json
   def update
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @mycontact.update(mycontact_params)
-        format.html { redirect_to @mycontact, notice: 'Mycontact was successfully updated.' }
+        format.html { redirect_to user_mycontact_path(@user, @mycontact), notice: 'Mycontact was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -51,12 +59,14 @@ class MycontactsController < ApplicationController
     end
   end
 
+
   # DELETE /mycontacts/1
   # DELETE /mycontacts/1.json
   def destroy
+    @user = User.find(params[:user_id])
     @mycontact.destroy
     respond_to do |format|
-      format.html { redirect_to mycontacts_url }
+      format.html { redirect_to user_mycontacts_path(@user) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +79,6 @@ class MycontactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mycontact_params
-      params.require(:mycontact).permit(:firstName, :lastName, :emailBusiness, :emailPersonal)
+      params.require(:mycontact).permit(:first_name, :last_name, :email_busines, :email_personal, :user_id)
     end
 end

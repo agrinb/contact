@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401213628) do
+ActiveRecord::Schema.define(version: 20140407203238) do
 
   create_table "comments", force: true do |t|
     t.integer  "mycontact_id"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20140401213628) do
 
   create_table "mycontacts", force: true do |t|
     t.integer  "user_id"
-    t.string   "firstName"
-    t.string   "lastName"
-    t.string   "emailBusiness"
-    t.string   "emailPersonal"
-    t.string   "phoneNumber"
-    t.string   "phoneNumber2"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email_business"
+    t.string   "email_personal"
+    t.string   "phone_number"
+    t.string   "phone_number_2"
     t.string   "address"
     t.string   "address2"
     t.string   "city"
@@ -53,12 +53,16 @@ ActiveRecord::Schema.define(version: 20140401213628) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",     null: false
+    t.string   "encrypted_password",     default: "",     null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "status",                 default: "free", null: false
+    t.boolean  "is_admin",               default: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,      null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -67,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140401213628) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
