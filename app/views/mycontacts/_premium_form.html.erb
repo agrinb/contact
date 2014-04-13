@@ -1,21 +1,62 @@
-<p id="notice"><%= notice %></p>
-<p> PREMIUM MEMBERSHIP </p>
-<p>
-  <strong>Firstname:</strong>
-  <%= @mycontact.first_name %>
-</p>
+<div class="container-fluid">
+	<h1 id="notice"><%= notice %>
+	<p> PREMIUM MEMBERSHIP </p>
+</h1>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @mycontact.last_name %>
-</p>
+	<ul>
+		<li>
+		  <strong>First Name:</strong>
+		  <%= @mycontact.first_name %>
+		</li>
+		<li>
+		  <strong>Last Name:</strong>
+		  <%= @mycontact.last_name %>
+		</li>
 
-<p>
-  <strong>Emailbusiness:</strong>
-  <%= @mycontact.email_business %>
-</p>
+		<li>
+		  <strong>Business Email:</strong>
+		  <%= @mycontact.email_business %>
+		</li>
 
-<p>
-  <strong>Emailpersonal:</strong>
-  <%= @mycontact.email_personal %>
-</p>
+		<li>
+		  <strong>Personal Email:</strong>
+		  <%= @mycontact.email_personal %>
+		</li>
+		<li>
+		  <strong>Phone Number:</strong>
+		  <%= @mycontact.phone_number %>
+		</li>
+		<li>
+		  <strong>Phone Number (alt):</strong>
+		  <%= @mycontact.phone_number_2 %>
+		</li>
+		<li>
+		  <strong>Address:</strong>
+		  <%= @mycontact.address %>
+		</li>
+		<li>
+		  <strong>Address:</strong>
+		  <%= @mycontact.address2 %>
+		</li>
+		<li>
+		  <strong>City:</strong>
+		  <%= @mycontact.city %>
+		</li>
+		<li>
+		  <strong>State:</strong>
+		  <%= @mycontact.state %>
+		</li>
+		<li>
+		  <strong>Zip Code:</strong>
+		  <%= @mycontact.zip %>
+		</li>
+	</ul>
+<div>
+	<%= f.fields_for :notes do |builder| %>
+  <%= render 'notes', f: builder %>
+<% end %>
+<%= link_to_add_fields "Add Note", f, :notes %>
+</div>
+
+<% end %>
+</div>

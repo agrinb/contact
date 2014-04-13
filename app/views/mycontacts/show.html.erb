@@ -1,8 +1,14 @@
+<div class="container-fluid">
 
-<% if @user.status == "free" %>
-	<%= render partial: 'free_form' %>
-<% else %>
-	<%= render partial: 'premium_form' %>
-<% end %>
-<%= link_to 'Edit', edit_user_mycontact_path(@user, @mycontact) %> |
-<%= link_to 'Back', user_mycontacts_path %>
+	<% if @user.status == "free" %>
+		<%= render partial: 'free_form' %>
+	<% else %>
+		<%= render partial: 'premium_form' %>
+	<% end %>
+	<div>
+		<p>
+			<%= link_to 'Edit', edit_user_mycontact_path(@user, @mycontact) %> |
+			<%= link_to 'Back', user_mycontacts_path %>
+		</p>
+	</div>
+</div>

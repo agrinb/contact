@@ -1,12 +1,13 @@
-<h1>Listing mycontacts</h1>
+<div class="container-fluid">
+<h1>Contacts:</h1>
 
-<table>
+<table id="hor-minimalist-a" summary="MyContact List">
   <thead>
     <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Emailbusiness</th>
-      <th>Emailpersonal</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email Business</th>
+      <th scope="col">Email Personal</th>
       <th></th>
       <th></th>
       <th></th>
@@ -29,5 +30,7 @@
 </table>
 
 <br>
-
+<p>
 <%= link_to 'Add Contact', new_user_mycontact_path %>
+</p>
+</div>
