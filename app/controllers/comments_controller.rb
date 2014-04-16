@@ -4,7 +4,9 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @user = User.find(params[:user_id])
+    @mycontact = @user.mycontacts.find(params[:mycontact_id])
+    @comments = @mycontact.comments
   end
 
   # GET /comments/1
@@ -14,11 +16,15 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @user = User.find(params[:user_id])
+    @mycontact = @user.mycontacts.find(params[:mycontact_id])
+    @comments = @mycontact.comments.build
   end
 
   # GET /comments/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @mycontact = @user.mycontacts.find(params[:id]) 
   end
 
   # POST /comments
@@ -40,6 +46,8 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+    @user = User.find(params[:user_id])
+    @mycontact = @user.mycontacts.find(params[:mycontact_id])
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }

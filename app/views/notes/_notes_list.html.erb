@@ -1,6 +1,4 @@
-<h1>Listing notes</h1>
-<%= render partial: "notes_list", collection: @notes %>
-<!-- <table>
+<table>
   <thead>
     <tr>
       <th>Note</th>
@@ -11,7 +9,7 @@
   </thead>
 
   <tbody>
-    <% @notes.each do |note| %>
+    <% notes_list.each do |note| %>
     
       <tr>
         <td><%= note.note %></td>
@@ -21,8 +19,4 @@
       </tr>
     <% end %>
   </tbody>
-</table> -->
-
-<br>
-
-<%= link_to 'New Note', new_user_mycontact_note_path %>
+</table>

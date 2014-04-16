@@ -1,4 +1,4 @@
-<%= form_for([:user, @mycontact]) do |f| %>
+<%= form_for(@mycontact, url: edit_user_mycontact_path) do |f| %>
   <% if @mycontact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@mycontact.errors.count, "error") %> prohibited this mycontact from being saved:</h2>

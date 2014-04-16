@@ -14,6 +14,7 @@ class MycontactsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @mycontact = @user.mycontacts.find(params[:id])
+    @notes = @mycontact.notes
   end
 
   # GET /mycontacts/new

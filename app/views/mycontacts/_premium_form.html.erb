@@ -1,5 +1,6 @@
 <div class="container-fluid">
-	<h1 id="notice"><%= notice %>
+<h1 id="notice">
+	<%= notice %>
 	<p> PREMIUM MEMBERSHIP </p>
 </h1>
 
@@ -52,11 +53,3 @@
 		</li>
 	</ul>
 <div>
-	<%= f.fields_for :notes do |builder| %>
-  <%= render 'notes', f: builder %>
-<% end %>
-<%= link_to_add_fields "Add Note", f, :notes %>
-</div>
-
-<% end %>
-</div>

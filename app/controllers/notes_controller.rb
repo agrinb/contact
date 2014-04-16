@@ -4,12 +4,17 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
+    #that was very stupid, i thought i was setting @user with the before_action
+    @user = User.find(params[:user_id])
+    @mycontact = Mycontact.find(params[:mycontact_id])
     @notes = Note.all
+
   end
 
   # GET /notes/1
   # GET /notes/1.json
   def show
+    @user = User.find(params[:user_id])
     @mycontact = Mycontact.find(params[:mycontact_id])
     @notes = @mycontact.notes
   end
@@ -17,18 +22,25 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
+    @user = User.find(params[:user_id])
+    @mycontact = @user.mycontacts.find(params[:mycontact_id])
+    @note = @mycontact.notes.new
   end
 
   # GET /notes/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @mycontact = Mycontacts.find(params[:mycontact_id])
+    @note = @mycontact.notes.find(params[:id])
   end
 
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(note_params)
-
+    @user = User.find(params[:user_id])
+    @mycontact = Mycontact.find(params[:mycontact_id])
+    @note = @mycontact.notes.new(note_params)
+    
     respond_to do |format|
       if @note.save
         format.html { redirect_to user_mycontact_notes_path, notice: 'Note was successfully created.' }
@@ -43,6 +55,9 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
+    @user = User.find(params[:user_id])
+    @mycontact = @user.mycontacts.find(params[:mycontact_id])
+    @note = @mycontact.notes.find(params[:id])
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
@@ -72,6 +87,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:note)
+      params.require(:note).permit(:note, :user_id, :mycontact_id)
     end
 end

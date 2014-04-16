@@ -22,7 +22,7 @@ Contact::Application.routes.draw do
   get "pages/welcome"
   get "pages/about"
   get "pages/contact"
-  # get "upgrade" => "users#upgrade"
+  get "upgrade" => "users#upgrade"
   # get "downgrade" => "users#downgrade"
 
 
