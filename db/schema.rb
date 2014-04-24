@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407203238) do
+ActiveRecord::Schema.define(version: 20140424003907) do
 
   create_table "comments", force: true do |t|
     t.integer  "mycontact_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140407203238) do
     t.integer  "mycontact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "mycontacts", force: true do |t|
@@ -51,6 +52,26 @@ ActiveRecord::Schema.define(version: 20140407203238) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "uploadedfiles", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "uploadedfiles", ["user_id"], name: "index_uploadedfiles_on_user_id", using: :btree
+
+  create_table "userfiles", force: true do |t|
+    t.string   "doc"
+    t.integer  "meeting_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "filename"
+    t.string   "file_name_slug"
+  end
+
+  add_index "userfiles", ["meeting_id"], name: "index_userfiles_on_meeting_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",     null: false

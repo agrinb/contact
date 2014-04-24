@@ -1,0 +1,6 @@
+<tr>
+    <td><%= note_row.note %></td>
+    <td><%= link_to 'Show', user_mycontact_notes_path(@user, note_row.mycontact, note_row) %></td>
+    <td><%= link_to 'Edit', edit_user_mycontact_note_path(@user, note_row.mycontact, note_row)%></td>
+    <td><%= link_to 'Destroy', user_mycontact_note_path(@user, note_row.mycontact, note_row), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

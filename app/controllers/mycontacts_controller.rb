@@ -1,12 +1,17 @@
 class MycontactsController < ApplicationController
   before_action :set_mycontact, only: [:show, :edit, :update, :destroy]
- 
+
 
   # GET /mycontacts
   # GET /mycontacts.json
   def index
     @user = User.find(params[:user_id])
-    @mycontacts = @user.mycontacts
+    if params.has_key?(:search)
+      # @mycontacts = Mycontact.where("last_name like '% ? %' ", params[:search])
+      @mycontacts = Mycontact.where("last_name like ?", "%#{params[:search]}%")
+    else
+      @mycontacts = @user.mycontacts
+    end
   end
 
   # GET /mycontacts/1

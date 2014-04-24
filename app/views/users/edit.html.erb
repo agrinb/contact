@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <%= form_for(@user) do |f| %>
+      
+    <div class="form-group"><%= f.label :email %><br />
+    <%= f.email_field :email, class: "form-control", autofocus: true %>
+    </div>
+
+    
+        <div class="form-group">
+      <%= f.label :firstName %>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :lastName %>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+
+     <div class="form-group"><%= f.submit "Update", class: "btn btn-primary" %></div>
+  <% end %>
+  </div>
+  <div class="panel-footer">
+    <h3>Cancel my account</h3>
+
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-warning" %></p>
+
+    <%= link_to "Back", :back %> |
+    <%= link_to "Upgrade to Premium", upgrade_user_path(@user) %>
+  </div>
+</div>

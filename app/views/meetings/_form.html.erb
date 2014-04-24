@@ -1,4 +1,4 @@
-<%= form_for(@meeting) do |f| %>
+<%= form_for([@user, @mycontact, @meeting]) do |f| %>
   <% if @meeting.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :meeting %><br>
+    <%= f.text_field_tag :name %>
+  </div>
   <div class="field">
     <%= f.label :meeting %><br>
     <%= f.datetime_select :meeting %>

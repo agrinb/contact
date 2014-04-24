@@ -1,6 +1,14 @@
 <div class="container-fluid">
-<h1>Contacts:</h1>
 
+<div id="hor-minimalist-a">
+  <%= form_tag(user_mycontacts_path, method: "get") do %>
+  <%= label_tag(:search, "Search for:") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>
+</div>
+
+<h2>Contacts:</h2>
 <table id="hor-minimalist-a" summary="MyContact List">
   <thead>
     <tr>
@@ -22,13 +30,14 @@
         <td><%= mycontact.email_business %></td>
         <td><%= mycontact.email_personal %></td>
         <td><%= link_to 'Show', user_mycontact_path(@user, mycontact) %></td>
+        <td><%= link_to 'New Meeting', new_user_mycontact_meeting_path(@user, mycontact, @meeting) %>
         <td><%= link_to 'Edit', edit_user_mycontact_path(@user, mycontact) %></td>
         <td><%= link_to 'Destroy', user_mycontact_path(@user, mycontact), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-  
+
 <br>
 <p>
 <%= link_to 'Add Contact', new_user_mycontact_path %>

@@ -1,4 +1,5 @@
 Contact::Application.routes.draw do
+  
   root "pages#welcome"
   devise_for :users
 
@@ -9,10 +10,15 @@ Contact::Application.routes.draw do
       get "downgrade"
     end
     resources :mycontacts do
-       resources :meetings
+       resources :meetings do
+         resources :userfiles
+        end
        resources :notes
        resources :comments
      end
+    resources :notes
+    resources :meetings
+    resources :userfiles
    end
 
 

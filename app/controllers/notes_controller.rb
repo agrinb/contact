@@ -1,14 +1,17 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_mycontact, only: [:new, :index, :show, :edit, :update, :destroy]
   # GET /notes
   # GET /notes.json
   def index
-    #that was very stupid, i thought i was setting @user with the before_action
+    
     @user = User.find(params[:user_id])
-    @mycontact = Mycontact.find(params[:mycontact_id])
-    @notes = Note.all
-
+    
+    if @mycontact
+      @notes = @mycontact.notes
+    else
+      @notes = Note.all
+    end
   end
 
   # GET /notes/1
@@ -23,7 +26,6 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @user = User.find(params[:user_id])
-    @mycontact = @user.mycontacts.find(params[:mycontact_id])
     @note = @mycontact.notes.new
   end
 
@@ -37,6 +39,7 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
+    
     @user = User.find(params[:user_id])
     @mycontact = Mycontact.find(params[:mycontact_id])
     @note = @mycontact.notes.new(note_params)
@@ -85,6 +88,9 @@ class NotesController < ApplicationController
       @note = Note.find(params[:id])
     end
 
+    def set_mycontact
+      @mycontact = Mycontact.find(params[:mycontact_id]) rescue nil
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
       params.require(:note).permit(:note, :user_id, :mycontact_id)
