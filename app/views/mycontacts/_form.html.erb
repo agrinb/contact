@@ -1,34 +1,38 @@
-<%= form_for(@mycontact, url: edit_user_mycontact_path) do |f| %>
-  <% if @mycontact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@mycontact.errors.count, "error") %> prohibited this mycontact from being saved:</h2>
+<form class="form-inline" role="form">
+  <div class="form-group">
+    <%= form_for(@mycontact, url: edit_user_mycontact_path) do |f| %>
+      <% if @mycontact.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@mycontact.errors.count, "error") %> prohibited this mycontact from being saved:</h2>
 
-      <ul>
-      <% @mycontact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @mycontact.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
 
-  <div class="field">
-    <%= f.label :firstName %><br>
-    <%= f.text_field :first_name %>
+        <div class="field" class="form-group">
+          <%= f.label :first_name, "First Name:" %><br>
+          <%= f.text_field :first_name, class: "form-control", :autofocus => true %>
+        </div>
+        <div class="field">
+          <%= f.label :last_name, "Last Name:" %><br>
+          <%= f.text_field :last_name, class: "form-control", :autofocus => true %>
+        </div>
+        <div class="field">
+          <%= f.label :email_business, "Email:" %><br>
+          <%= f.text_field :email_business, class: "form-control", :autofocus => true %>
+        </div>
+        <div class="field">
+          <%= f.label :email_personal, "Email(alt):" %><br>
+          <%= f.text_field :email_personal, class: "form-control", :autofocus => true %>
+        </div>
+         <div class="actions">
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :lastName %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :emailBusiness %><br>
-    <%= f.text_field :email_business %>
-  </div>
-  <div class="field">
-    <%= f.label :emailPersonal %><br>
-    <%= f.text_field :email_personal %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</form>
+

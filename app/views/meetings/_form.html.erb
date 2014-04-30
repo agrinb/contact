@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :meeting %><br>
-    <%= f.text_field_tag :name %>
+    <%= f.label :name, "Meeting Title" %><br>
+    <%= f.text_field :name, class: "form-control"%>
   </div>
   <div class="field">
-    <%= f.label :meeting %><br>
-    <%= f.datetime_select :meeting %>
+    <%= f.label :meeting, "Meeting Time"%><br>
+    <%= f.datetime_select :meeting, class: "form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

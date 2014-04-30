@@ -1,10 +1,37 @@
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
+  <p>
+    <strong>Meeting Title:</strong>
+    <%= @meeting.name %>
+    <br>
+    <strong>Meeting Time:</strong>
+    <%= @meeting.meeting.strftime('%b, %d, %Y -- %I:%M %P') %>
+  </p>
+  <br>
+  <br>
 
-<p>
-  <strong>Meeting:</strong>
-  <%= @meetings.meeting %>
-</p>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Meeting</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_user_mycontact_meeting_path %> |
-<%= link_to 'All Contacts', user_mycontacts_path %>
+  <tbody>
+    <% @userfiles.each do |userfile| %>
+      <tr>
+        <td><%= userfile.filename %></td>
+        <td><%= link_to 'Download', download_user_mycontact_meeting_userfile_path(@user, @mycontact, @meeting, userfile) %></td>
+        <td><%= link_to 'Destroy', user_mycontact_meeting_userfile_path(@user, @mycontact, @meeting, userfile), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  <%= link_to 'All Meetings', user_mycontact_meetings_path %> |
+  <%= link_to 'All Contacts', user_mycontacts_path %>
+</div>

@@ -1,6 +1,10 @@
-<h1>Editing mycontact</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @mycontact %> |
-<%= link_to 'Back', mycontacts_path %>
+  <% if @user.status == "free" %>
+    <%= render partial: 'form' %>
+  <% else %>
+    <%= render partial: 'form_premium' %>
+  <% end %>
+
+<%= link_to 'Show', user_mycontact_path %> |
+<%= link_to 'Back', user_mycontacts_path %>

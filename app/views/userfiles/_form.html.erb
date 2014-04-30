@@ -13,10 +13,10 @@
 
 <div class="field">
     <%= f.label :filename, "File" %><br>
-    <%= f.text_field :filename %>
+    <%= f.text_field :filename, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Upload", class="btn btn-primary"%>
   </div>
 <% end %>

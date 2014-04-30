@@ -4,9 +4,9 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    
+
     @user = User.find(params[:user_id])
-    
+
     if @mycontact
       @notes = @mycontact.notes
     else
@@ -19,7 +19,8 @@ class NotesController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @mycontact = Mycontact.find(params[:mycontact_id])
-    @notes = @mycontact.notes
+    #@note = @mycontact.notes
+    @note = @mycontact.notes.find(params[:id])
   end
 
 
@@ -32,18 +33,18 @@ class NotesController < ApplicationController
   # GET /notes/1/edit
   def edit
     @user = User.find(params[:user_id])
-    @mycontact = Mycontacts.find(params[:mycontact_id])
+    @mycontact = Mycontact.find(params[:mycontact_id])
     @note = @mycontact.notes.find(params[:id])
   end
 
   # POST /notes
   # POST /notes.json
   def create
-    
+
     @user = User.find(params[:user_id])
     @mycontact = Mycontact.find(params[:mycontact_id])
     @note = @mycontact.notes.new(note_params)
-    
+
     respond_to do |format|
       if @note.save
         format.html { redirect_to user_mycontact_notes_path, notice: 'Note was successfully created.' }

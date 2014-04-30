@@ -1,21 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Firstname:</strong>
-  <%= @mycontact.first_name %>
-</p>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @mycontact.last_name %>
-</p>
+  <dl class="dl-horizontal">
+    <dt>Firstname:</dt>
+     <dd><%= @mycontact.first_name %></dd>
 
-<p>
-  <strong>Emailbusiness:</strong>
-  <%= @mycontact.email_business %>
-</p>
 
-<p>
-  <strong>Emailpersonal:</strong>
-  <%= @mycontact.email_personal %>
-</p>
+
+    <dt>Lastname:</dt>
+    <dd><%= @mycontact.last_name %></dd>
+
+
+
+    <dt>Emailbusiness:</dt>
+    <dd><%= @mycontact.email_business %></dd>
+
+
+
+    <dt>Emailpersonal:</dt>
+    <dd><%= @mycontact.email_personal %></dd>
+  </dl>
+</div>
+

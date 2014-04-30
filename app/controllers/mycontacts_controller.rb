@@ -7,7 +7,7 @@ class MycontactsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     if params.has_key?(:search)
-      # @mycontacts = Mycontact.where("last_name like '% ? %' ", params[:search])
+      #@mycontacts = Mycontact.where("last_name like '% ? %' ", params[:search])
       @mycontacts = Mycontact.where("last_name like ?", "%#{params[:search]}%")
     else
       @mycontacts = @user.mycontacts
@@ -31,6 +31,7 @@ class MycontactsController < ApplicationController
 
   # GET /mycontacts/1/edit
   def edit
+    @user = User.find(params[:user_id])
   end
 
   # POST /mycontacts
@@ -85,6 +86,6 @@ class MycontactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mycontact_params
-      params.require(:mycontact).permit(:first_name, :last_name, :email_busines, :email_personal, :user_id)
+      params.require(:mycontact).permit(:first_name, :last_name, :email_busines, :email_personal, :user_id, :email_business, :phone_number, :phone_number_2, :address, :address2, :city, :state, :zip)
     end
 end

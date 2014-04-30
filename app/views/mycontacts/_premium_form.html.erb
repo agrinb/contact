@@ -1,57 +1,60 @@
 <div class="container-fluid">
-<h1 id="notice">
-	<%= notice %>
-	<p> PREMIUM MEMBERSHIP </p>
-</h1>
+	<div>
+		<h3>Contact Info:</h3>
+	<p id="notice">
+		<%= notice %>
+	</p>
 
-	<ul>
-		<li>
-		  <strong>First Name:</strong>
-		  <%= @mycontact.first_name %>
-		</li>
-		<li>
-		  <strong>Last Name:</strong>
-		  <%= @mycontact.last_name %>
-		</li>
+		<dl class="dl-horizontal">
 
-		<li>
-		  <strong>Business Email:</strong>
-		  <%= @mycontact.email_business %>
-		</li>
+			  <dt>First Name:</dt>
+			  <dd><%= @mycontact.first_name %></dd>
 
-		<li>
-		  <strong>Personal Email:</strong>
-		  <%= @mycontact.email_personal %>
-		</li>
-		<li>
-		  <strong>Phone Number:</strong>
-		  <%= @mycontact.phone_number %>
-		</li>
-		<li>
-		  <strong>Phone Number (alt):</strong>
-		  <%= @mycontact.phone_number_2 %>
-		</li>
-		<li>
-		  <strong>Address:</strong>
-		  <%= @mycontact.address %>
-		</li>
-		<li>
-		  <strong>Address:</strong>
-		  <%= @mycontact.address2 %>
-		</li>
-		<li>
-		  <strong>City:</strong>
-		  <%= @mycontact.city %>
-		</li>
-		<li>
-		  <strong>State:</strong>
-		  <%= @mycontact.state %>
-		</li>
-		<li>
-		  <strong>Zip Code:</strong>
-		  <%= @mycontact.zip %>
-		</li>
-	</ul>
-<div>
+
+			  <dt>Last Name:</dt>
+			  <dd><%= @mycontact.last_name %></dd>
+
+
+
+			  <dt>Business Email:</dt>
+			  <dd><%= @mycontact.email_business %></dd>
+
+
+
+			  <dt>Personal Email:</dt>
+			  <dd><%= @mycontact.email_personal %></dd>
+
+
+			  <dt>Phone Number:</dt>
+			  <dd><%= @mycontact.phone_number %></dd>
+
+
+			  <dt>Phone Number (alt):</dt>
+			  <dd><%= @mycontact.phone_number_2 %></dd>
+
+
+			  <dt>Address:</dt>
+			  <dd><%= @mycontact.address %></dd>
+
+
+			  <dt>Address:</dt>
+			  <dd><%= @mycontact.address2 %></dd>
+
+
+			  <dt>City:</dt>
+			  <dd><%= @mycontact.city %></dd>
+
+
+			  <dt>State:</dt>
+			  <dd><%= @mycontact.state %></dd>h
+
+
+			  <dt>Zip Code:</dt>
+			  <dd><%= @mycontact.zip %></dd>
+
+		</dl>
+		</div>
+
+</div>
 
 

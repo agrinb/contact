@@ -35,14 +35,16 @@ end
   end
 
   def download
-    id = params[:id]
-    doc = Userfile.find(id)
-    if doc != nil
-      userId = session[:user_id]
-      tmpFileName = userId.to_s + "_" + doc.filename
-      fileName = Rails.root.join('public','uploads', tmpFileName)
-      send_file(fileName, filename: doc.filename, type: "application/text")
-    end
+    # id = params[:id]
+    # doc = Userfile.find(id)
+    # if doc != nil
+    #   userId = session[:user_id]
+    #   tmpFileName = userId.to_s + "_" + doc.filename
+    #   fileName = Rails.root.join('public','uploads', tmpFileName)
+    #   send_file(fileName, filename: doc.file_name_slug, type: "application/text")
+    # end
+    doc = Userfile.find(params[:id])
+    send_file(Rails.root.join('public', 'uploads', doc.file_name_slug))
   end
 
   # POST /userfiles

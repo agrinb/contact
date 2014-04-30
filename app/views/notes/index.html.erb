@@ -1,9 +1,11 @@
-<h1>Listing notes</h1>
-  <%= render partial: "notes_list", object: @notes %>
+<div class="container-fluid">
+  <h1>Listing notes</h1>
+    <%= render partial: "notes_list", object: @notes %>
 
-<br>
+  <br>
 
 
-<% if @mycontact %>
-  <%= link_to 'New Note', new_user_mycontact_note_path(@user, @mycontact, @note) %>
-<% end %>
+  <% if @mycontact %>
+    <%= link_to 'New Note', new_user_mycontact_note_path(@user, @mycontact, @note) %>
+  <% end %>
+</div>

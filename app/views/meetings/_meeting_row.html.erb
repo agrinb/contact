@@ -1,6 +1,8 @@
 <tr>
-    <td><%= meeting_row.meeting %></td>
+    <td><%= meeting_row.name %></td>
+    <td><%= meeting_row.meeting.strftime('%b, %d, %Y -- %I:%M %P') %></td>
     <td><%= link_to 'Show', user_mycontact_meeting_path(@user, meeting_row.mycontact, meeting_row) %></td>
     <td><%= link_to 'Edit', edit_user_mycontact_meeting_path(@user, meeting_row.mycontact, meeting_row)%></td>
+    <td><%= link_to 'Add File', new_user_mycontact_meeting_userfile_path(@user, meeting_row.mycontact, meeting_row) %></td>
     <td><%= link_to 'Destroy', user_mycontact_meeting_path(@user, meeting_row.mycontact, meeting_row), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

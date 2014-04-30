@@ -1,24 +1,27 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :upgrade, :downgrade]
-  	
+
   def show
-  	
+
   end
 
   def edit
-  	
+
   end
 
   def update
-  	
+  	@user.update_attributes(user_params)
+    if @user.save
+      redirect_to user_path(@user)
+    end
   end
 
   def destroy
-  	
+
   end
 
 	def upgrade
-		
+
 		@user.update_attributes(:status => "premium")
 		if @user.save
 			respond_to do |format|

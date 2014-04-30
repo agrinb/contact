@@ -1,15 +1,20 @@
 <div class="container-fluid">
 
-<div id="hor-minimalist-a">
-  <%= form_tag(user_mycontacts_path, method: "get") do %>
-  <%= label_tag(:search, "Search for:") %>
-  <%= text_field_tag(:search) %>
-  <%= submit_tag("Search") %>
-<% end %>
-</div>
+<div id="search">
 
-<h2>Contacts:</h2>
-<table id="hor-minimalist-a" summary="MyContact List">
+<%= form_tag user_mycontacts_path, :method => 'get' do %>
+  <%= label_tag "Find:" %>
+  <%= text_field_tag :search, params[:search], class: "form-control"%>
+  <br>
+  <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+<% end %>
+
+</div>
+<br>
+<h2 id="contacts_header" class="container-fluid">Contacts:</h2>
+<br>
+
+<table class="table" summary="MyContact List">
   <thead>
     <tr>
       <th scope="col">First Name</th>
@@ -29,9 +34,9 @@
         <td><%= mycontact.last_name %></td>
         <td><%= mycontact.email_business %></td>
         <td><%= mycontact.email_personal %></td>
-        <td><%= link_to 'Show', user_mycontact_path(@user, mycontact) %></td>
-        <td><%= link_to 'New Meeting', new_user_mycontact_meeting_path(@user, mycontact, @meeting) %>
-        <td><%= link_to 'Edit', edit_user_mycontact_path(@user, mycontact) %></td>
+        <td><%= link_to 'Show ', user_mycontact_path(@user, mycontact) %></td>
+        <td><%= link_to 'New Meeting ', new_user_mycontact_meeting_path(@user, mycontact, @meeting) %>
+        <td><%= link_to 'Edit ', edit_user_mycontact_path(@user, mycontact) %></td>
         <td><%= link_to 'Destroy', user_mycontact_path(@user, mycontact), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

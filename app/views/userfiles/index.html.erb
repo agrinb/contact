@@ -1,33 +1,34 @@
-<h1>Listing userfiles</h1>
+<div class="container-fluid">
+  <h1>All Files</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Filename</th>
-      <th>Meeting</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @userfiles.each do |userfile| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= userfile.filename %></td>
-
-        <td><%= userfile.meeting %></td>
-        <td><%= link_to 'Show', user_mycontact_meeting_userfiles_path(@user, @mycontact, @meeting, userfile) %></td>
-        <td><%= link_to 'Edit', edit_user_mycontact_meeting_userfile_path(@user, @mycontact, @meeting, userfile) %></td>
-        <td><%= link_to 'Destroy', user_mycontact_meeting_userfile_path(@user, @mycontact, @meeting, userfile), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Filename</th>
+        <th>Meeting</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @userfiles.each do |userfile| %>
+        <tr>
+          <td><%= userfile.filename %></td>
+
+          <td><%= userfile.meeting.name %></td>
+          <td><%= link_to 'Download', download_user_mycontact_meeting_userfile_path(@user, @mycontact, @meeting, userfile) %></td>
+          <td><%= link_to 'Delete', user_mycontact_meeting_userfile_path(@user, @mycontact, @meeting, userfile), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
 
 
-<% if @mycontact %>
-  <%= link_to 'Attach File', new_user_mycontact_meeting_userfile_path(@user, @mycontact, @meeting) %>
-<% end %>
+  <% if @mycontact %>
+    <%= link_to 'Attach File', new_user_mycontact_meeting_userfile_path(@user, @mycontact, @meeting) %>
+  <% end %>
+  </div>

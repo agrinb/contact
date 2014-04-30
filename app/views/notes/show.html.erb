@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Note:</strong>
-  <%= @note.note %>
-</p>
+  <p>
+    <h3>Note:</h3>
+    <%= @note.note %>
+  </p>
 
-<%= link_to 'Edit', edit_user_mycontact_note_path %> |
-<%= link_to 'Back', user_mycontact_notes_path %>
+  <%= link_to 'Edit', edit_user_mycontact_note_path %> |
+  <%= link_to 'Back', user_mycontact_notes_path %>
+</div>

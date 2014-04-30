@@ -1,9 +1,9 @@
 <%= form_for ([@user, @mycontact, @note]) do |f| %>
   <div class="field">
     <%= f.label :note, "Note" %><br>
-    <%= f.text_area :note %>
+    <%= f.text_area :note, class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

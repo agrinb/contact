@@ -5,4 +5,6 @@ class Mycontact < ActiveRecord::Base
 	has_many :comments
   has_many :userfiles
 	accepts_nested_attributes_for :notes, :meetings, :comments, :userfiles
+
+
 end

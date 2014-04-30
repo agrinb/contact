@@ -1,10 +1,12 @@
-<h1>Listing meetings</h1>
+<div class="container-fluid">
+  <h1>Listing meetings</h1>
 
-  <%= render partial: "meetings_list", object: @meetings %>
+    <%= render partial: "meetings_list", object: @meetings %>
 
-<br>
+  <br>
 
 
-<% if @mycontact %>
-  <%= link_to 'New Meeting', new_user_mycontact_meeting_path(@user, @mycontact, @meeting) %>
+  <% if @mycontact %>
+    <%= link_to 'New Meeting', new_user_mycontact_meeting_path(@user, @mycontact, @meeting) %>
 <% end %>
+</div>

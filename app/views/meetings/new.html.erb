@@ -1,6 +1,8 @@
-<h1>New meeting</h1>
+<div class="container-fluid">
+  <h3>New Meeting</h3>
+<br>
+  <%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Contact Details', user_mycontact_path(@user, @mycontact) %> |
-<%= link_to 'All Contacts', user_mycontacts_path %>
+  <%= link_to 'Contact Details', user_mycontact_path(@user, @mycontact) %> |
+  <%= link_to 'All Contacts', user_mycontacts_path %>
+</div>
